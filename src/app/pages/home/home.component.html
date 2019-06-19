@@ -1,0 +1,4 @@
+<div class="container">
+    <app-search-player (itemToFilter)="filterData($event)"></app-search-player>
+    <app-list-players [data]="data | async"></app-list-players>
+</div>

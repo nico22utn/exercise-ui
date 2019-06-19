@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <h2 class="custom-header">Football Player Finder</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="playerForm" (ngSubmit)="searchPlayers()">
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Player Name" formControlName="name">
+            <span class="color-danger" *ngIf="playerForm.get('name').touched && playerForm.get('name').invalid && playerForm.get('name').errors.pattern">
+                Only letters
+            </span>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <select class="form-control" formControlName="position">
+              <option selected="selected">{{defaultPosition}}</option>
+              <option *ngFor="let position of positions">{{position}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <input type="number" class="form-control" placeholder="Age" formControlName="age">
+            <span class="color-danger" *ngIf="playerForm.get('age').touched && playerForm.get('age').invalid 
+              && playerForm.get('age').errors.min">
+              Age must be a value between 18 to 40
+            </span>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <button [disabled]="playerForm.invalid" type="submit" class="btn btn-secondary">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

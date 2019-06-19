@@ -4,14 +4,10 @@
 
 export const environment = {
   production: false,
-  END_POINT: 'https://football-players-b31f2.firebaseio.com/players.json?print=pretty',
+  END_POINT: 'https://reqres.in/api/users',
+  KEY: 'fbclid=IwAR0TGSiyNbyrzrqq9TG3wRyN-9Y-xJ_EIMvk9t_nE2sOUfYK1CGkZuVHv4o',
   FORMAT_DATE : 'YYYY-MM-DD',
-  POSITIONS: [
-    'Attacking Midfield','Central Midfield','Centre-Back', 'Centre-Forward','Defensive Midfield','Keeper', 
-    'Left Midfield', 'Left Wing', 'Left-Back', 'Right-Back'
-  ],
-  DEFAULT_POSITION : 'Position',
-  NAME_FILTER : 'name',
+  LIMIT_PAGE: 4
 };
 
 /*

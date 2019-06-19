@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12">
+    <h3>Exercise</h3>
+    <form [formGroup]="pageForm" (ngSubmit)="selectPage()">
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <!-- <label><b>Enter your page:</b></label> -->
+            <input type="number" placeholder="Enter your page" class="form-control" formControlName="page" name="page"/>
+            <p class="badge badge-alert" *ngIf="pageForm.get('page').touched && pageForm.get('page').errors?.required">
+              Page can't be empty
+            </p>
+            <p class="badge badge-alert" *ngIf="pageForm.get('page').touched && pageForm.get('page').errors?.min">
+              Page can't be zero or negative
+            </p>
+            <p class="badge badge-alert" *ngIf="pageForm.get('page').touched && pageForm.get('page').errors?.max">
+              Page can't be greater to {{limitPage}}
+            </p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <button type="submit" class="btn btn-secondary" [disabled]="pageForm.invalid">Search</button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-4">
+          <button type="submit" class="btn btn-info" [disabled]="pageForm.invalid" style="margin: 1rem;">Search</button>
+        </div>
+      </div> -->
+    </form>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-12">
+    <h3>Percentage Users: {{ (percentage | async) | number }} %</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card-group">
+      <div class="card" *ngFor="let user of users$ | async">
+        <img [src]="user.avatar" class="card-img-top" alt="Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{user.first_name}}</h5>
+          <h5 class="card-title">{{user.last_name}}</h5>
+          <p class="card-text"><small class="text-muted">{{user.email}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
